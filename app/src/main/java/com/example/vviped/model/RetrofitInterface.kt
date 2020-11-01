@@ -28,7 +28,7 @@ interface RetrofitInterface {
         operator fun invoke(): RetrofitInterface {
 
             return Retrofit.Builder()
-                .baseUrl("http://192.168.43.93/vviped/")
+                .baseUrl("https://jakartaqurban.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(RetrofitInterface::class.java)
