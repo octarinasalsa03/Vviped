@@ -4,20 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ColorLightGrey"
+
     tools:context=".MainChat">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/appBar_user"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-       >
+        android:background="@color/colorWhite"
+
+        >
 
         <ImageView
             android:id="@+id/btn_BackFromChat"
             android:layout_width="wrap_content"
-            android:layout_weight=".5"
             android:layout_height="40dp"
             android:padding="5dp"
             android:src="@drawable/ic_keyboard_backspace"
@@ -28,16 +31,17 @@
             android:id="@+id/UserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="5.5"
+            android:textAlignment="center"
             android:fontFamily="@font/cabin"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="username"
-            android:textSize="18sp"
             android:textStyle="bold"
             />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <RadioGroup
         android:id="@+id/radiogroup_chat"
@@ -47,6 +51,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
+        android:background="@color/colorWhite"
+
         >
 
         <RadioButton
@@ -56,7 +62,7 @@
             android:layout_weight="1"
             android:checked="true"
             android:textColor="@color/ColorGrey"
-            android:text="seller" />
+            android:text="user" />
 
         <RadioButton
             android:id="@+id/radioButton_myself"
@@ -64,18 +70,17 @@
             android:layout_height="wrap_content"
             android:textColor="@color/ColorGrey"
             android:layout_weight="1"
-            android:text="buyer" />
+            android:text="me" />
     </RadioGroup>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/product_in_chat"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingRight="20dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/btn_corner"
-        android:layout_below="@id/radiogroup_chat">
+        android:layout_below="@id/radiogroup_chat"
+        android:background="@color/colorWhite"
+        >
 
         <ImageView
             android:id="@+id/product_img"
@@ -134,7 +139,6 @@
             android:paddingRight="8dp"
             android:text="Campaign"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +155,6 @@
             android:paddingLeft="5dp"
             android:text="Campaign Title"
             android:textColor="@color/colorAccent2"
-            android:textSize="12sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,14 +165,128 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/chatRecyclerView"
+        android:background="?android:attr/listDivider"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
-        android:layout_below="@id/product_in_chat"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/default_chat"
+        android:layout_below="@id/product_in_chat"
+        android:background="@color/colorWhite"
+
+        tools:scrollbarAlwaysDrawHorizontalTrack="false" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/default_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="10dp"
         android:layout_above="@id/r1"
-        android:layout_height="match_parent"
-        />
+        android:background="@color/colorWhite"
+
+        >
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:scrollbarStyle="outsideOverlay"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <Button
+                    android:id="@+id/default_msg_1"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/btn_default_msg"
+                    android:text="Saya ingin Beli Produk ini"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="11dp"
+                    tools:layout_marginTop="5dp" />
+
+                <Button
+                    android:id="@+id/default_msg_2"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/btn_default_msg"
+                    android:text="Terima Kasih!"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="11dp"
+                    />
+
+                <Button
+                    android:id="@+id/default_msg_3"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/btn_default_msg"
+                    android:text="Apakah Masih Ada?"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="11dp"
+                    tools:layout_marginTop="5dp" />
+
+                <Button
+                    android:id="@+id/default_msg_4"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/btn_default_msg"
+                    android:text="OK"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="11dp"
+                    tools:layout_marginTop="5dp" />
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/r1"
@@ -189,26 +306,18 @@
 
             <EditText
                 android:id="@+id/input_message"
-                android:layout_width="fill_parent"
-                android:layout_height="44dp"
-                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
                 android:background="@drawable/btn_typing"
                 android:fontFamily="@font/cabin"
                 android:hint="@string/type_message"
                 android:imeOptions="actionSend"
                 android:inputType="text"
-                android:padding="12dp"
+                android:textSize="15sp"
+                android:paddingLeft="12dp"
                 android:textColor="@color/colorBlack"
-               />
-
-            <ImageButton
-                android:id="@+id/btnSendMessage"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/btn_send_msg"
-                android:src="@drawable/ic_send"
-                android:textColor="@color/colorWhite" />
+                />
 
 
             <ImageButton
@@ -219,6 +328,16 @@
                 android:background="@drawable/btn_send_msg"
                 android:src="@drawable/ic_camera"
                 android:textColor="@color/colorWhite" />
+            <ImageButton
+                android:id="@+id/btnSendMessage"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/btn_send_msg"
+                android:src="@drawable/ic_send"
+                android:textColor="@color/colorWhite" />
+
+
 
         </LinearLayout>
     </RelativeLayout>
