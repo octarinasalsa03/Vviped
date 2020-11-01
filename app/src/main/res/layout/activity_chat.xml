@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainChat">
+
+    <LinearLayout
+        android:id="@+id/appBar_user"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+       >
+
+        <ImageView
+            android:id="@+id/btn_BackFromChat"
+            android:layout_width="wrap_content"
+            android:layout_weight=".5"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_keyboard_backspace"
+            />
+
+
+        <TextView
+            android:id="@+id/UserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.5"
+            android:fontFamily="@font/cabin"
+            android:gravity="center_horizontal"
+            android:text="username"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radiogroup_chat"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/appBar_user"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        >
+
+        <RadioButton
+            android:id="@+id/radioButton_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:textColor="@color/ColorGrey"
+            android:text="seller" />
+
+        <RadioButton
+            android:id="@+id/radioButton_myself"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ColorGrey"
+            android:layout_weight="1"
+            android:text="buyer" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/product_in_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="20dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/btn_corner"
+        android:layout_below="@id/radiogroup_chat">
+
+        <ImageView
+            android:id="@+id/product_img"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:src="@android:drawable/sym_def_app_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="5dp"
+            android:text="Product Name"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/product_img"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Price"
+            android:textColor="@color/colorAccent2"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/product_img"
+            app:layout_constraintTop_toBottomOf="@+id/product_name"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/campaign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_background"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="Campaign"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product_img"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/product_campaign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp"
+            android:paddingLeft="5dp"
+            android:text="Campaign Title"
+            android:textColor="@color/colorAccent2"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/product_img"
+            app:layout_constraintTop_toBottomOf="@+id/campaign"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_below="@id/product_in_chat"
+        android:layout_width="match_parent"
+        android:layout_above="@id/r1"
+        android:layout_height="match_parent"
+        />
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+            <EditText
+                android:id="@+id/input_message"
+                android:layout_width="fill_parent"
+                android:layout_height="44dp"
+                android:layout_weight="2"
+                android:background="@drawable/btn_typing"
+                android:fontFamily="@font/cabin"
+                android:hint="@string/type_message"
+                android:imeOptions="actionSend"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="@color/colorBlack"
+               />
+
+            <ImageButton
+                android:id="@+id/btnSendMessage"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/btn_send_msg"
+                android:src="@drawable/ic_send"
+                android:textColor="@color/colorWhite" />
+
+
+            <ImageButton
+                android:id="@+id/btnSendImage"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/btn_send_msg"
+                android:src="@drawable/ic_camera"
+                android:textColor="@color/colorWhite" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
